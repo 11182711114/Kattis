@@ -3,7 +3,8 @@ package sigma.problem_C;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class test {
+// From: https://github.com/RonCruz/CompetitiveProgramming/blob/d4b3227ca292be202ec95b741c19b08b7ec625c8/RandomCollection/UKIrelandPC16A.java
+public class UKIrelandPC16A {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

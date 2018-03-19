@@ -38,7 +38,7 @@ public class Taxation {
 					incomeLeft -= band.size;
 					continue;
 				} else {
-					double tmpBandLeft = (band.size - incomeLeft) * (1 - band.percent/100) ;
+					double tmpBandLeft = (band.size - incomeLeft) * (1 - band.percent/100);
 					incomeLeft = 0;
 					if (tmpBandLeft >= giftLeft) {
 						totalGiftReq += band.getReqAmountBeforeTax(giftLeft);

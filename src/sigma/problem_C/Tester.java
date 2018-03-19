@@ -87,7 +87,7 @@ public class Tester {
 			PrintStream oldOut = System.out;
 		    System.setOut(new java.io.PrintStream(out));
 			
-			test.main(new String[0]);
+			UKIrelandPC16A.main(new String[0]);
 	
 			for (String s : out.toString().split("\n")) {
 				output.add(s);
