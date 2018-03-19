@@ -41,18 +41,18 @@ public class Taxation {
 					double tmpBandLeft = (band.size - incomeLeft) * (1 - band.percent/100) ;
 					incomeLeft = 0;
 					if (tmpBandLeft >= giftLeft) {
-						totalGiftReq += band.getReqAmountForGift(giftLeft);
+						totalGiftReq += band.getReqAmountBeforeTax(giftLeft);
 						giftLeft = 0;
 						break;
 					} else {
 						giftLeft -= tmpBandLeft;
-						totalGiftReq += band.getReqAmountForGift(tmpBandLeft);
+						totalGiftReq += band.getReqAmountBeforeTax(tmpBandLeft);
 					}
 				}
 			}
 
 			if (giftLeft > 0) {
-				totalGiftReq += finalTax.getReqAmountForGift(giftLeft);
+				totalGiftReq += finalTax.getReqAmountBeforeTax(giftLeft);
 			}
 
 			System.out.format("%.6f%n", totalGiftReq);
@@ -78,7 +78,7 @@ class TaxBand {
 	public TaxBand() {
 	}
 
-	public double getReqAmountForGift(double i) {
+	public double getReqAmountBeforeTax(double i) {
 		return i / (1 - (percent / 100));
 	}
 
