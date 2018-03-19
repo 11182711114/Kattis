@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,7 +14,7 @@ public class Tester {
 	
 	
 	public static void main(String[] args) {
-		int iterations = 500_000;
+		int iterations = 5_000;
 		for (int j = 0; j < iterations; j++) {
 			InputStream old = System.in;
 			
@@ -77,11 +78,7 @@ public class Tester {
 				System.setIn(newIn);
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-			}
-			
-			
-			List<String> output = new ArrayList<>();
-			
+			}			
 			
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
 			PrintStream oldOut = System.out;
@@ -89,9 +86,7 @@ public class Tester {
 			
 			UKIrelandPC16A.main(new String[0]);
 	
-			for (String s : out.toString().split("\n")) {
-				output.add(s);
-			}
+			String[] outRef = out.toString().split("\n");
 			
 			try {
 				InputStream newIn = new ByteArrayInputStream( input.getBytes("UTF-8") );
@@ -106,9 +101,9 @@ public class Tester {
 			List<String> finalOutput = new ArrayList<>();
 			boolean failure = false;
 			String[] tmpOut = out.toString().split("\n");
-			for (int i = 0; i < output.size(); i++) {
-				if (!output.get(i).equals(tmpOut[i])) {
-					finalOutput.add(String.format("%-20.6f", Double.parseDouble(output.get(i))) + String.format("%-20.6f", Double.parseDouble(tmpOut[i])) + output.get(i).equals(tmpOut[i]));
+			for (int i = 0; i < outRef.length; i++) {
+				if (!outRef[i].equals(tmpOut[i])) {
+					finalOutput.add(String.format("%-20.6f", Double.parseDouble(outRef[i])) + String.format("%-20.6f", Double.parseDouble(tmpOut[i])) + outRef[i].equals(tmpOut[i]));
 					failure = true;
 				}
 			}	
@@ -118,7 +113,7 @@ public class Tester {
 			if (failure) {
 				System.out.println("Input:");
 				System.out.println(input);
-				output.forEach(System.out::println);
+				finalOutput.forEach(System.out::println);
 				System.out.println();
 			}
 			
