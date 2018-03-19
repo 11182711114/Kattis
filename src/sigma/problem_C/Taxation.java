@@ -2,7 +2,7 @@ package sigma.problem_C;
 
 import java.util.Scanner;
 
-public class GiftTaxRatioCalculator {
+public class Taxation {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);

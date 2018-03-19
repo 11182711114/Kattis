@@ -100,7 +100,7 @@ public class Tester {
 				e.printStackTrace();
 			}
 			
-			GiftTaxRatioCalculator.main(new String[0]);
+			Taxation.main(new String[0]);
 			
 
 			List<String> finalOutput = new ArrayList<>();
